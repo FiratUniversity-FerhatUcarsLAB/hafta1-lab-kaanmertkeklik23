@@ -1,4 +1,52 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No:250541053
+AD-SOYAD:Kaan Mert Keklik
 
-Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:     Mükemmel omlet yapma ile ilgili pseudocode(Sözde kod)  algoritması 
+Başla
+
+// Malzemeleri hazırla
+Malzemeleri_Temizle()
+Yumurtaları_Getir()
+Tavayı_Getir()
+Yağı_Getir()
+Tuz_Getir()
+İsteğe_Bağlı_Malzemeleri_Getir() // peynir, sebze, baharat vs.
+
+
+// Yumurtaları kır ve çırp
+Kase = Yeni_Kase()
+Yumurtaları_Kır(Kase)
+Tuz_Ekle(Kase)
+İsteğe_Bağlı_Malzemeleri_Ekle(Kase)
+Yumurtaları_Çırp(Kase)
+
+
+// Tavayı ısıt
+Tava = Tavayı_Ocağa_Koy()
+Ocağı_Aç(Orta_Ateş)
+Tava_Isınıncaya_Kadar_Bekle()
+
+// Yağ ekle
+Yağ_Ekle(Tava)
+Yağın_Erilmesini_Bekle()
+
+// Yumurtaları dök
+Çırpılmış_Karışımı_Dök(Tava)
+
+// Omlet pişene kadar bekle
+Omletin_Altı_Pişene_Kadar_Bekle()
+Gerekiyorsa_Spatula_ile_Kenarları_Kaldır()
+
+// Omleti katla
+Eğer_İsteniyorsa_İç_Malzemeleri_Ekle()
+Omleti_Katla()
+
+// Pişirmeye devam et
+Omletin_İçi_Pişene_Kadar_Bekle()
+
+// Servis et
+Omleti_Tabağa_Al()
+İsteğe_Bağlı_Süsleme_Yap()
+Servis_Et()
+
+Bitir
