@@ -1,4 +1,30 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No:250541053
+AD-SOYAD:Kaan Mert Keklik
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Başla
+
+// Öğrenci sayısını al
+Yaz("Kaç öğrenci var?")
+Öğrenci_Sayısı = Girdi_Al()
+
+// Notları saklamak için liste oluştur
+Not_Listesi = Boş_Liste()
+
+// Her öğrencinin notunu al
+i = 1
+Tekrarla (i ≤ Öğrenci_Sayısı):
+    Yaz(i, ". öğrencinin notunu gir:")
+    Not = Girdi_Al()
+    Not_Listesi'ne_Ekle(Not)
+    i = i + 1
+
+// Notları yüksekten düşüğe sırala
+Sirali_Notlar = Notlari_Sirala_Yüksekten_Düşüğe(Not_Listesi)
+
+// Sıralanmış notları yazdır
+Yaz("Notlar (yüksekten düşüğe):")
+Her_Not_için (Not in Sirali_Notlar):
+    Yaz(Not)
+
+Bitir
