@@ -1,4 +1,49 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No:250541053
+AD-SOYAD:Kaan Mert Keklik 
 
-Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:     Tur bazlı basit bir kart oyunuyla ilgili genel pseudocode(sözde kod ) algoritması 
+Başla
+
+// Oyuncu elini alır
+El = Kartları_Dağıt()
+
+// Oyun tur bazlıdır
+Oyun_Bitirildi_Mi = False
+
+TUR = 1
+
+Tekrarla (Oyun_Bitirildi_Mi == False):
+
+    Yaz("Tur: ", TUR)
+
+    // Oyuncunun sırasıysa
+    Eğer Oyuncunun_Sırasıysa():
+
+        // En iyi hamleyi bul
+        Oynanabilir_Kartlar = Oynanabilir_Kartları_Bul(El, Oyun_Durumu)
+
+        Eğer Oynanabilir_Kartlar Boş Değilse:
+            En_Iyi_Kart = Stratejik_Kart_Seçimi(Oynanabilir_Kartlar, Oyun_Durumu)
+            Kartı_Oyna(En_Iyi_Kart)
+            El'den_Kaldır(En_Iyi_Kart)
+        Aksi halde:
+            Yaz("Pas geçildi")
+            Pas_Geç()
+
+    // Diğer oyuncuların hamlelerini bekle
+    Rakip_Hamleleri = Rakip_Hamlelerini_Takip_Et()
+
+    // Oyun durumu güncellenir
+    Oyun_Durumu = Guncelle_Oyun_Durumu(Rakip_Hamleleri)
+
+    // Kazanan kontrol edilir
+    Eğer Oyun_Bitti_Mi():
+        Oyun_Bitirildi_Mi = True
+
+    TUR = TUR + 1
+
+Yaz("Oyun bitti.")
+Kazanan = Kazananı_Belirle()
+Yaz("Kazanan: ", Kazanan)
+
+Bitir
