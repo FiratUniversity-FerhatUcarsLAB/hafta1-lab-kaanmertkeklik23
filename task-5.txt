@@ -1,4 +1,56 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No:250541053
+AD-SOYAD:Kaan Mert Keklik
 
-Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:[ İhtiyaca bağlı araç onerisi yapan pseeudocode algoritması ]
+FUNCTION AracOner(bütçe, kullanım_amacı, yolcu_sayısı, yakıt_tercihi, bagaj_ihtiyacı, ekstra_öncelikler):
+
+    # 1) Araç veritabanını yükle (marka, model, fiyat, segment, yakıt, bagaj, performans puanı vs.)
+    arac_listesi ← LoadVehicleDatabase()
+
+    uygun_araçlar ← []
+
+    # 2) Ön filtreleme: bütçe ve temel kriterlere göre
+    FOR araç IN arac_listesi:
+        IF araç.fiyat <= bütçe AND
+           araç.yolcu_kapasitesi >= yolcu_sayısı AND
+           (yakıt_tercihi == "fark etmez" OR araç.yakıt == yakıt_tercihi):
+            
+            # Bagaj kriteri
+            IF bagaj_ihtiyacı == "küçük" OR araç.bagaj_hacmi >= BagajHacimMin(bagaj_ihtiyacı):
+                uygun_araçlar.APPEND(araç)
+
+    # 3) Kullanım amacına göre puanlama
+    FOR araç IN uygun_araçlar:
+        araç.puan ← 0
+        
+        # şehir içi: küçük boyut, az yakıt tüketimi
+        IF kullanım_amacı == "şehir içi":
+            araç.puan += ScoreFuelEconomy(araç)
+            araç.puan += ScoreSizeCompact(araç)
+        
+        # uzun yol: konfor, güvenlik, büyük bagaj
+        ELSE IF kullanım_amacı == "uzun yol":
+            araç.puan += ScoreComfort(araç)
+            araç.puan += ScoreSafety(araç)
+            araç.puan += ScoreBagaj(araç)
+
+        # ticari: taşıma kapasitesi, dayanıklılık
+        ELSE IF kullanım_amacı == "ticari":
+            araç.puan += ScorePayload(araç)
+            araç.puan += ScoreDurability(araç)
+        
+        # arazi: 4x4, yerden yükseklik
+        ELSE IF kullanım_amacı == "arazi":
+            araç.puan += ScoreOffRoad(araç)
+
+        # 4) Ekstra önceliklere göre ek puan
+        FOR öncelik IN ekstra_öncelikler:
+            araç.puan += ScoreByPreference(araç, öncelik)
+
+    # 5) Puanlara göre sırala
+    uygun_araçlar ← SortBy(uygun_araçlar, key=araç.puan, descending=True)
+
+    # 6) En uygun ilk N aracı döndür
+    önerilen_araç_listesi ← uygun_araçlar[0:N]   # N = örn. 5
+
+    RETURN önerilen_araç_listesi
