@@ -1,4 +1,42 @@
-Öğrenci No:
-AD-SOYAD:
+Öğrenci No:250541053
+AD-SOYAD:Kaan Mert Keklik
 
 Lütfen seçtiğiniz algoritmaya ait çözümü ve diğer isterleri aşağıya ekleyiniz:
+Başla
+
+// 1. Gerekli parçaları tanımla
+Şekil = Hedef_Şekli_Tanımla()
+Gerekli_Parçalar = Şekil_Gereken_Parçaları_Al(Şekil)
+
+// 2. Çalışma zeminini hazırla
+Zemin = Yeni_Zemin_Oluştur()
+
+// 3. Tüm parçaları sırayla yerleştir
+Her_Parça_için (Parça in Gerekli_Parçalar):
+
+    // Parçanın konumunu ve yönünü al
+    Konum = Parça.Konumu
+    Yön = Parça.Yönü
+
+    // Uygun parçayı kutudan al
+    Uygun_Parça = Parçayı_Bul(Parça.Tipi, Parça.Renk)
+
+    // Parçayı zemine yerleştir
+    Yerleştir(Zemin, Uygun_Parça, Konum, Yön)
+
+    // Yerleştirmenin doğru olup olmadığını kontrol et
+    Eğer Yerleştirme_Hatalıysa():
+        Yaz("Hatalı yerleştirme! Geri alınıyor.")
+        Yerleştirmeyi_Geri_Al()
+        Doğru_Konum_Bul()
+
+// 4. Şekil tamamlandı mı kontrol et
+Eğer Şekil_Tamamlandı_Mı(Zemin, Şekil):
+    Yaz("Tebrikler! Şekil tamamlandı.")
+Aksi halde:
+    Yaz("Şekil tamamlanamadı. Eksik ya da hatalı parça olabilir.")
+
+// 5. Sonucu göster
+Şekli_Göster(Zemin)
+
+Bitir
